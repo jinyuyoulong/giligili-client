@@ -1,6 +1,18 @@
 <template>
   <div class="home">
-    <h1>GiliGili大和平!</h1>
+      <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="活动名称">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+
+        <el-form-item label="活动形式">
+          <el-input type="textarea" v-model="form.desc"></el-input>
+        </el-form-item>
+
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">提交</el-button>
+        </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -8,8 +20,23 @@
 // @ is an alias to /src
 
 export default {
-  name: 'home',
-  components: {
+    data() {
+      return {
+        form: {
+          name: '',
+          desc: ''
+        }
+      }
+    },
+    methods: {
+      onSubmit() {
+        console.log('submit!');
+      }
+    }
   }
-}
 </script>
+<style scoped lang="scss">
+.home{
+  margin: 20px;
+}
+</style>
