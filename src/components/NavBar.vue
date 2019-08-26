@@ -4,7 +4,7 @@
   mode="horizontal" router="">
   <!-- 绑定 router 根据index定位 -->
   <el-menu-item index="/">首页</el-menu-item>
-  <el-menu-item index="/post-video">提交视频</el-menu-item>
+  <el-menu-item index="/postvideo">提交视频</el-menu-item>
   <el-menu-item index="/about">关于我们</el-menu-item>
 </el-menu>
 </template>
