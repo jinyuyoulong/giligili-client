@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-// import PostVideo from './views/PostVideo'
+// import PostVideo from './views/PostVideo' // 引入组件 两种方式
 
 Vue.use(Router)
 
@@ -17,7 +17,7 @@ export default new Router({
     {
       path: '/postvideo',
       name: 'postView',
-      component: () => import('./views/PostVideo.vue')
+      component: () => import('./views/PostVideo.vue') // 引入组件
     },
     {
       path: '/about',
