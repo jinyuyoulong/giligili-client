@@ -4,6 +4,6 @@ service:
   giligili-client: 
     image: registry.cn-beijing.aliyuncs.com/jinyuyoulong/giligili:latest
     ports:
-      - "3001:3001"
+      - "3001:80"
     container_name: giligili-vue
     restart: always
