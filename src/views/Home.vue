@@ -2,13 +2,13 @@
   <div class="home">
     <del class="">
       <el-row :gutter="20">
-        <el-col :span="4" v-for="vodie in videos" v-bind:key="vodie.id">
-          <el-card >
+        <el-col :span="6" v-for="video in videos" v-bind:key="video.id">
+          <el-card class="videoCard" @click.native="goVideo(video)">
             <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="video-avatar">
             <div >
-              <span class="video-title">{{ vodie.title }}</span>
+              <div class="video-title">{{ video.title }}</div>
               <div class="video-bottom clearfix">
-                <span class="video-info">{{ vodie.info }}</span>
+                <span class="video-info">{{ video.info.substring(0, 40) }}</span>
               </div>
             </div>
           </el-card>
@@ -38,6 +38,9 @@ export default {
       API.getVideos().then((res) => {
         this.videos = res.data
       })
+    },
+    goVideo (video) {
+      this.$router.push({ name: 'showVideo', params: { videoID: video.id } })
     }
   },
   comments: {
@@ -48,14 +51,21 @@ export default {
 <style scoped lang="scss">
 .video-title{
   color: #303133;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden
 }
 .video-avatar{
-  width: 100%;
+  width: 100%
 }
 .video-info{
-  color: #909399;
+  color: #909399
 }
 .video-bottom{
-  margin-bottom: 35px;
+  margin-bottom: 35px
+}
+.videoCard{
+  // 光标 手指 切换
+  cursor: pointer;
 }
 </style>

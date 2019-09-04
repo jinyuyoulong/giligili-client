@@ -16,8 +16,13 @@ export default new Router({
     },
     {
       path: '/postvideo',
-      name: 'postView',
+      name: 'postVideo',
       component: () => import('./views/PostVideo.vue') // 引入组件
+    },
+    {
+      path: '/video/:videoID',
+      name: 'showVideo',
+      component: () => import('./views/ShowVideo.vue') // 引入组件
     },
     {
       path: '/about',

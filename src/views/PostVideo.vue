@@ -30,12 +30,19 @@ export default {
   methods: {
     onSubmit () {
       API.postVideo(this.form).then((res) => {
+        if (res.status === 0) {
+          this.$notify({
+            title: '投稿成功',
+            message: `投稿ID为${res.data.id}`,
+            type: 'success'
+          })
+        } else {
+          this.$notify({
+            title: '投稿失败',
+            message: res.msg
+          })
+        }
         //   $notify : element 通知控件
-        this.$notify({
-          title: '投稿成功',
-          message: `投稿ID为$(res.data.id)`,
-          type: 'success'
-        })
       }).catch((error) => {
         this.$notify({
           title: '投稿失败',
