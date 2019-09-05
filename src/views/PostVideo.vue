@@ -4,6 +4,9 @@
         <el-form-item label="名称">
           <el-input v-model="form.Title"></el-input>
         </el-form-item>
+        <el-form-item label="视频地址">
+          <el-input v-model="form.URL"></el-input>
+        </el-form-item>
         <el-form-item label="描述">
           <el-input type="textarea" v-model="form.Info"></el-input>
         </el-form-item>
@@ -23,7 +26,8 @@ export default {
     return {
       form: {
         Title: '',
-        Info: ''
+        Info: '',
+        URL: ''
       }
     }
   },

@@ -21,13 +21,10 @@ export default {
     return {
       playerOptions: {
         // videojs options
-        muted: true,
         fluid: true,
-        language: 'en',
-        playbackRates: [0.7, 1.0, 1.5, 2.0],
         sources: [{
           type: 'video/mp4',
-          src: 'https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm'
+          src: ''
         }],
         poster: '/static/images/author.jpg'
       }
@@ -36,14 +33,13 @@ export default {
   mounted () {
     console.log('this is current player instance object', this.player)
   },
-  computed: {
-    player () {
-      return this.$refs.videoPlayer.player
-    }
+  beforeMount () {
+    this.load()
   },
   methods: {
     load () {
-      API.getVideo(this.$router.params.videoID).then((res) => {
+      API.getVideo(this.$route.params.videoID).then((res) => {
+        console.log(res)
         this.video = res.data
         this.playerOptions.sources[0].src = this.video.url
       })
