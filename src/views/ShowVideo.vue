@@ -23,7 +23,7 @@ export default {
         // videojs options
         fluid: true,
         sources: [{
-          type: 'video/mp4',
+          type: 'video/',
           src: ''
         }],
         poster: '/static/images/author.jpg'
