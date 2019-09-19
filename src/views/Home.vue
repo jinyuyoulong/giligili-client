@@ -14,6 +14,17 @@
           </el-card>
         </el-col>
       </el-row>
+      <div class="block">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="[2, 3]"
+          :page-size="limit"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="total">
+        </el-pagination>
+      </div>
     </del>
   </div>
 </template>
@@ -27,7 +38,11 @@ export default {
   data () {
     return {
       // data 有一个初始属性，空数组
-      videos: []
+      videos: [],
+      start: 0,
+      limit: 2,
+      total: 0,
+      currentPage: 0
     }
   },
   beforeMount () {
@@ -35,12 +50,21 @@ export default {
   },
   methods: {
     load () {
-      API.getVideos().then((res) => {
-        this.videos = res.data
+      API.getVideos(this.start, this.limit).then((res) => {
+        this.videos = res.data.items
+        this.total = res.data.total
       })
     },
     goVideo (video) {
       this.$router.push({ name: 'showVideo', params: { videoID: video.id } })
+    },
+    handleSizeChange (val) {
+      this.limit = val
+      this.load()
+    },
+    handleCurrentChange (val) {
+      this.start = (val - 1) * this.limit
+      this.load()
     }
   },
   comments: {
