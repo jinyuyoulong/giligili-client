@@ -6,6 +6,7 @@
   <el-menu-item index="/">首页</el-menu-item>
   <el-menu-item index="/postvideo">提交视频</el-menu-item>
   <el-menu-item index="/about">关于我们</el-menu-item>
+  <el-menu-item index="/login">登录</el-menu-item>
 </el-menu>
 </template>
 <script>
